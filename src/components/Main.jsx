@@ -12,17 +12,20 @@ import { data } from "../data/testData";
 // import timeseriesPayload from "../timeseriesPayload.json";
 import Header from "./Header";
 import React, { useState, useEffect } from "react";
+import timeSeriesPayload from "../timeSeriesPayload.json";
 
 export default function Main() {
   const [allData, setAllData] = useState([]);
 
   useEffect(() => {
-    fetch("../timeseriesPayload.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllData(data);
-        console.log(data);
-      });
+    // fetch(timeSeriesPayload)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setAllData(data);
+    //     console.log(data);
+    //   });
+    console.log(timeSeriesPayload.meter_id);
+    console.log(timeSeriesPayload);
   }, []);
 
   console.log("TEST: ");
