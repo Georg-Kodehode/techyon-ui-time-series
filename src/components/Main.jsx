@@ -17,7 +17,7 @@ export default function Main() {
   const [allData, setAllData] = useState([]);
 
   useEffect(() => {
-    fetch("./src/timeseriesPayload.json")
+    fetch("../timeseriesPayload.json")
       .then((res) => res.json())
       .then((data) => {
         setAllData(data);
