@@ -1,28 +1,33 @@
 import {
   ResponsiveContainer,
-  LineChart,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
   Legend,
-  Line,
   BarChart,
   Bar,
   Label,
   LabelList,
 } from "recharts";
-import { nanoid } from "nanoid";
 
 export default function Chart(props) {
-  const { data, showLabelList, upperDomainValue, chartTitle, label } = props;
+  const {
+    data,
+    showLabelList,
+    upperDomainValue,
+    chartTitle,
+    label,
+    dataKey,
+    keyProp,
+  } = props;
   return (
-    <div className="content-wrapper" key={nanoid()}>
+    <div className="content-wrapper" key={keyProp}>
       <h3 className="chart-title">{chartTitle}</h3>
       <ResponsiveContainer width={"80%"} height={400}>
-        <BarChart data={data}>
+        <BarChart data={data} margin={{ right: 30 }}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={"timestamp"}>
+          <XAxis dataKey={dataKey}>
             <Label value={label}></Label>
           </XAxis>
           <YAxis domain={[0, upperDomainValue]} />
@@ -35,22 +40,4 @@ export default function Chart(props) {
       </ResponsiveContainer>
     </div>
   );
-}
-
-{
-  /* <ResponsiveContainer width={"80%"} height={400}>
-      <LineChart
-        width={400}
-        height={400}
-        data={element}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="timestamp" />
-        <YAxis domain={[0, 60]} />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="kWh" stroke="#8884d8" />
-      </LineChart>
-      </ResponsiveContainer> */
 }
